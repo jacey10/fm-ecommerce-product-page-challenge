@@ -1,9 +1,11 @@
+/* ===  FONTS === */
+
 @font-face {
   font-display: swap;
   font-family: 'Kumbh Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/kumbh-sans-v27-latin-regular.woff2') format('woff2'); 
+  src: url('assets/fonts/kumbh-sans-v27-latin-regular.woff2') format('woff2'); 
 }
 
 @font-face {
@@ -11,8 +13,11 @@
   font-family: 'Kumbh Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/kumbh-sans-v27-latin-700.woff2') format('woff2'); 
+  src: url('assets/fonts/kumbh-sans-v27-latin-700.woff2') format('woff2'); 
 }
+
+
+/* ===  CSS RESET === */
 
 /* Box sizing rules */
 *,
@@ -40,12 +45,6 @@ figure, blockquote, dl, dd {
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
-}
-
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  line-height: 1.5;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -95,28 +94,28 @@ textarea:not([rows]) {
   /* == COLOR PALLETTE == */
 
   /* Primary Color */
-  --clr-soft-orange: hsl(35, 77%, 62%);
-  --clr-soft-red: hsl(5, 85%, 63%);
+  --clr-orange: hsl(26, 100%, 55%);
+  --clr-pale-orange: hsl(25, 100%, 94%);
   
   /* Neutral Colors */
-  --clr-off-white: hsl(36, 100%, 99%);
-  --clr-grayish-blue: hsl(233, 8%, 79%);
-  --clr-dark-grayish-blue: hsl(236, 13%, 42%);
-  --clr-very-dark-blue: hsl(240, 100%, 5%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-grayish-blue: hsl(220, 14%, 75%);
+  --clr-light-grayish-blue: hsl(223, 64%, 98%);
+  --clr-dark-grayish-blue: hsl(219, 9%, 45%);
+  --clr-very-dark-blue: hsl(220, 13%, 13%);
   
   /* == TYPOGRAPHY == */
 
   /* font family */
-  --ff-body: 'Inter', sans-serif;
+  --ff-body: 'Kumbh Sans', sans-serif;
 
   /* font size */
-  --fs-paragraph: 0.9375rem;
+  --fs-paragraph: 1rem;
 
   /* font weights */
   --fw-regular: 400;
-  --fw-medium: 500;
   --fw-bold: 700;
-  --fw-bolder: 800;
 
   /* Spacing */
   --space-sr:  0.0625rem;
@@ -143,4 +142,14 @@ textarea:not([rows]) {
   html {
     scroll-behavior: smooth;
   }
+}
+
+
+/* ===  BASE STYLES === */
+
+body {
+  width: 100%;
+  min-height: 100svh;
+  font-family: var(--ff-body);
+  line-height: 1.5;
 }

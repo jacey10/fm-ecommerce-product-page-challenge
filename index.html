@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-    <link rel="preload" href="assets/fonts/figtree-v9-latin-500.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/figtree-v9-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/figtree-v9-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+    <link rel="preload" href="assets/fonts/kumbh-sans-v27-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/kumbh-sans-v27-latin-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <title>Frontend Mentor | E-commerce product page</title>
@@ -14,11 +13,39 @@
 
   <body>
 
-    Collections
-    Men
-    Women
-    About
-    Contact
+    <header class="header">
+
+      <button type="button" class="nav__toggle" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="menuOverlay">
+        <span class="nav__toggle--bar"></span>
+        <span class="nav__toggle--bar"></span>
+        <span class="nav__toggle--bar"></span>
+      </button>
+
+      <div class="header__logo">
+        <img class="header__logo--image" src="assets/images/icons/logo.svg" alt="" width="65" height="40">
+      </div>
+
+      <nav class="nav__links" aria-label="Header navigation">
+        <ul class="nav__links--group">
+          <li><a href="#" class="nav__links--link">Collections</a></li>
+          <li><a href="#" class="nav__links--link">Men</a></li>
+          <li><a href="#" class="nav__links--link">Women</a></li>
+          <li><a href="#" class="nav__links--link">About</a></li>
+          <li><a href="#" class="nav__links--link">Contact</a></li>
+        </ul>
+        
+      </nav>
+
+      <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+
+    </header>
+
+    <main>
+
+    </main>
+
+    
 
     Sneaker Company
 
@@ -34,9 +61,6 @@
     0
     Add to cart
     
-    <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </div>
+
   </body>
 </html>
