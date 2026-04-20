@@ -153,3 +153,130 @@ body {
   font-family: var(--ff-body);
   line-height: 1.5;
 }
+
+.header {
+  position: sticky;
+  top: 0;
+  height: 4rem;
+  width: 100%;
+  background: var(--clr-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  box-shadow: 0 var(--space-sr) 0  rgba(0,0,0,0.07);
+  z-index: 200;
+}
+
+.header__left--container, .header__right--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__left--container {
+  gap: 2.5rem;
+}
+
+.header__right--container {
+  gap: 3rem;
+}
+
+.nav__toggle {
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 200;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav__toggle--bar {
+  display: block;
+  width: 1.625rem;
+  height: 0.125rem;
+  background: var(--clr-very-dark-blue);
+  border-radius: 0.125rem;
+  transition: transform 0.35s ease;
+  transform-origin: center;
+}
+
+.menu--btn.open .bar:nth-child(1) {
+  transform: translateY(0.4375rem) rotate(45deg);
+}
+
+.menu--btn.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu--btn.open .bar:nth-child(3) {
+  transform: translateY(-0.4375rem) rotate(-45deg);
+}
+
+.nav__bar {
+  display: none;
+}
+
+.nav__links--group {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav__links--group li a {
+  text-decoration: none;
+}
+
+.nav__links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1875rem;
+  background: var(--gradient);
+  border-radius: 0.125rem 0.125rem 0 0;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: opacity 0.2s, transform 0.25s;
+}
+
+.user__avatar--wrapper img {
+  height: 3rem;
+  width: 3rem;
+}
+
+
+
+
+
+
+@media screen and (min-width:48rem) {
+
+  body {
+    padding-inline: 8rem;
+  }
+
+  .header {
+    height: 6rem;
+  }
+
+  .header .nav__bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  
+  .nav__toggle {
+    display: none;
+  }
+}
