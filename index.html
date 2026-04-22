@@ -12,22 +12,18 @@
   </head>
 
   <body>
-
     <header class="header">
-
       <div class="header__left--container">
         <button type="button" class="nav__toggle" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="menuOverlay">
           <span class="nav__toggle--bar"></span>
           <span class="nav__toggle--bar"></span>
           <span class="nav__toggle--bar"></span>
         </button>
-
         <div class="header__logo--container">
           <a href="#" class="logo">
             <img class="header__logo--image" src="assets/images/icons/logo.svg" alt="" width="65" height="40">
           </a>
         </div>
-
         <nav class="nav__links" aria-label="Header navigation">
           <ul class="nav__links--group">
             <li><a href="#" class="nav__links--link">Collections</a></li>
@@ -46,7 +42,6 @@
           <img class="cart__icon" src="assets/images/icons/icon-cart.svg" alt="" aria-hidden="true">
           <span class="cart__badge hidden">0</span>
         </button>
-
         <button class="user__avatar--btn" aria-label="Account">
           <img class="user__avatar" src="assets/images/avatar/image-avatar.png" alt="User avatar" width="100" height="100">
         </button>
@@ -61,31 +56,95 @@
     <main>
       <section class="gallery">
         <div class="gallery__main">
-          <img class="gallery__active--image">
-          <button class="gallery__btn--prev"></button>
-          <button class="gallery__btn--next"></button>
+          <img class="gallery__active--image" src="assets/images/products/image-product-1.jpg" alt="Product image">
+          <button class="gallery__btn--prev">
+            <img src="assets/images/icons/icon-previous.svg" alt="">
+          </button>
+          <button class="gallery__btn--next">
+            <img src="assets/images/icons/icon-next.svg" alt="">
+          </button>
         </div>
-        <div class="gallery__thumbnails"></div>
+        <ul class="gallery__thumbnails">
+          <li>
+            <button class="gallery__thumb" data-index="0">
+              <img src="assets/images/products/image-product-1-thumbnail.jpg" alt="">
+            </button>
+          </li>
+          <li>
+            <button class="gallery__thumb" data-index="1">
+              <img src="assets/images/products/image-product-2-thumbnail.jpg" alt="">
+            </button>
+          </li>
+          <li>
+            <button class="gallery__thumb" data-index="2">
+              <img src="assets/images/products/image-product-3-thumbnail.jpg" alt="">
+            </button>
+          </li>
+          <li>
+            <button class="gallery__thumb" data-index="3">
+              <img src="assets/images/products/image-product-4-thumbnail.jpg" alt="">
+            </button>
+          </li>
+        </ul>
       </section>
 
+      <section class="product__info">
+        <p class="brand">SNEAKER COMPANY</p>
+        <h1 class="product__title">Fall Limited Edition Sneakers</h1>
+        <p class="description">
+          These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.
+        </p>
+        <div class="pricing">
+          <span class="sales__price"> $125.00</span>
+          <span class="discount__badge">50%</span>
+          <span class="original__price">$250.00</span>
+        </div>
+        <div class="quantity__cart">
+          <div class="stepper">
+            <button class="stepper__minus"><img src="assets/images/icons/icon-minus.svg" alt=""></button>
+            <span class="stepper__count">0</span>
+            <button class="stepper__plus"><img src="assets/images/icons/icon-plus.svg" alt=""></button>
+          </div>
+          <button><span><img src="assets/images/icons/icon-cart.svg" alt=""></span>Add to cart</button>
+        </div>
+      </section>
     </main>
 
-    
-
-    Sneaker Company
-
-    Fall Limited Edition Sneakers
-
-    These low-profile sneakers are your perfect casual wear companion. Featuring a 
-    durable rubber outer sole, they’ll withstand everything the weather can offer.
-
-    $125.00
-    50%
-    $250.00
-
-    0
-    Add to cart
-    
-
+    <div class="lightbox hidden">
+      <div class="lightbox__inner">
+        <button class="lightbox__close">
+          <img src="assets/images/icons/icon-close.svg" alt="">
+        </button>
+        <img class="lightbox__active--image">
+        <button class="gallery__btn--prev">
+          <img src="assets/images/icons/icon-previous.svg" alt="">
+        </button>
+        <button class="gallery__btn--next">
+          <img src="assets/images/icons/icon-next.svg" alt="">
+        </button>
+        <ul class="lightbox__thumbnails">
+          <li>
+            <button class="lightbox__thumb" data-index="0">
+              <img src="assets/images/products/image-product-1-thumbnail.jpg" alt="">
+            </button>
+          </li>
+          <li>
+            <button class="lightbox__thumb" data-index="1">
+              <img src="assets/images/products/image-product-2-thumbnail.jpg" alt="">
+            </button>
+          </li>
+          <li>
+            <button class="lightbox__thumb" data-index="2">
+              <img src="assets/images/products/image-product-3-thumbnail.jpg" alt="">
+            </button>
+          </li>
+          <li>
+            <button class="lightbox__thumb" data-index="3">
+              <img src="assets/images/products/image-product-4-thumbnail.jpg" alt="">
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
