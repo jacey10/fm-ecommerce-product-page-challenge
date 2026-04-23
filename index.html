@@ -56,7 +56,7 @@
     <main>
       <section class="gallery">
         <div class="gallery__main">
-          <img class="gallery__active--image" src="assets/images/products/image-product-1.jpg" alt="Product image">
+          <img class="gallery__active--image" src="assets/images/products/image-product-1.jpg" alt="Product image" width="1000" height="1000">
           <button class="gallery__btn--prev">
             <img src="assets/images/icons/icon-previous.svg" alt="">
           </button>
@@ -95,8 +95,10 @@
           These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.
         </p>
         <div class="pricing">
-          <span class="sales__price"> $125.00</span>
-          <span class="discount__badge">50%</span>
+          <div class="promo">
+            <span class="sales__price"> $125.00</span>
+            <span class="discount__badge">50%</span>
+          </div>
           <span class="original__price">$250.00</span>
         </div>
         <div class="quantity__cart">
@@ -105,7 +107,17 @@
             <span class="stepper__count">0</span>
             <button class="stepper__plus"><img src="assets/images/icons/icon-plus.svg" alt=""></button>
           </div>
-          <button><span><img src="assets/images/icons/icon-cart.svg" alt=""></span>Add to cart</button>
+          
+          <button class="cart__btn">
+            <span class="cart__btn--icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9" cy="21" r="1" fill="currentColor"/>
+                <circle cx="20" cy="21" r="1" fill="currentColor"/>
+              </svg>
+            </span>
+            Add to Cart
+          </button>
         </div>
       </section>
     </main>
@@ -116,10 +128,10 @@
           <img src="assets/images/icons/icon-close.svg" alt="">
         </button>
         <img class="lightbox__active--image">
-        <button class="gallery__btn--prev">
+        <button class="lightbox__btn--prev">
           <img src="assets/images/icons/icon-previous.svg" alt="">
         </button>
-        <button class="gallery__btn--next">
+        <button class="lightbox__btn--next">
           <img src="assets/images/icons/icon-next.svg" alt="">
         </button>
         <ul class="lightbox__thumbnails">
