@@ -38,20 +38,43 @@
       <div class="backdrop" id="backdrop" aria-hidden="true"></div>
 
       <div class="header__right--container">
-        <button class="cart__btn" aria-label="Open cart">
-          <img class="cart__icon" src="assets/images/icons/icon-cart.svg" alt="" aria-hidden="true">
-          <span class="cart__badge hidden">0</span>
+        <button class="header__cart--btn" aria-label="Open cart">
+          
+          <span class="header__cart--icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="9" cy="21" r="1" fill="currentColor"/>
+              <circle cx="20" cy="21" r="1" fill="currentColor"/>
+            </svg>
+          </span>
+        
+          <span class="header__cart--badge hidden">0</span>
         </button>
         <button class="user__avatar--btn" aria-label="Account">
           <img class="user__avatar" src="assets/images/avatar/image-avatar.png" alt="User avatar" width="100" height="100">
         </button>
       </div>
-
-      <div class="cart__modal hidden" role="dialog" aria-label="Shopping cart">
-        <p class="cart__modal--title">Cart</p>
-        <div class="cart__modal--body"></div>
-      </div>
     </header>
+
+    <div class="cart__modal open" role="dialog" aria-label="Shopping cart">
+      <p class="cart__modal--title">Cart</p>
+      <div class="cart__modal--body">
+        <div class="cart__item">
+          <img class="cart__item--img" src="assets/images/products/image-product-1-thumbnail.jpg" width="176" height="176" alt="">
+          <div class="cart__item--info">
+            <p class="cart__item--name">Fall Limited Edition Sneakers</p>
+            <p class="cart__item--pricing">
+              <span class="cart__quantity">$125.00 x 1</span>
+              <span class="cart__total">$125.00</span>
+            </p>     
+          </div>
+          <button type="button" class="delete__btn" id="deleteBtn">
+            <img src="assets/images/icons/icon-delete.svg" alt="">
+          </button>
+        </div>
+        <button type="button" class="checkout__btn" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
 
     <main>
       <section class="gallery">
