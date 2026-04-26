@@ -14,7 +14,7 @@
   <body>
     <header class="header">
       <div class="header__left--container">
-        <button type="button" class="nav__toggle" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="menuOverlay">
+        <button type="button" class="nav__toggle open" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="menuOverlay">
           <span class="nav__toggle--bar"></span>
           <span class="nav__toggle--bar"></span>
           <span class="nav__toggle--bar"></span>
@@ -24,18 +24,20 @@
             <img class="header__logo--image" src="assets/images/icons/logo.svg" alt="" width="65" height="40">
           </a>
         </div>
-        <nav class="nav__links" aria-label="Header navigation">
-          <ul class="nav__links--group">
-            <li><a href="#" class="nav__links--link">Collections</a></li>
-            <li><a href="#" class="nav__links--link">Men</a></li>
-            <li><a href="#" class="nav__links--link">Women</a></li>
-            <li><a href="#" class="nav__links--link">About</a></li>
-            <li><a href="#" class="nav__links--link">Contact</a></li>
-          </ul>       
-        </nav>
+        <div class="nav__drawer is-open">
+          <nav class="nav__links" aria-label="Header navigation">
+            <ul class="nav__links--group">
+              <li><a href="#" class="nav__links--link">Collections</a></li>
+              <li><a href="#" class="nav__links--link">Men</a></li>
+              <li><a href="#" class="nav__links--link">Women</a></li>
+              <li><a href="#" class="nav__links--link">About</a></li>
+              <li><a href="#" class="nav__links--link">Contact</a></li>
+            </ul>       
+          </nav>
+        </div>
       </div>
 
-      <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+      <div class="backdrop is-open" id="backdrop" aria-hidden="true"></div>
 
       <div class="header__right--container">
         <button class="header__cart--btn" aria-label="Open cart">
@@ -48,7 +50,7 @@
             </svg>
           </span>
         
-          <span class="header__cart--badge hidden">0</span>
+          <span class="header__cart--badge hide">0</span>
         </button>
         <button class="user__avatar--btn" aria-label="Account">
           <img class="user__avatar" src="assets/images/avatar/image-avatar.png" alt="User avatar" width="100" height="100">
