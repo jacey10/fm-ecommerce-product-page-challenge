@@ -463,7 +463,7 @@ main {
   object-fit: cover;
 }
 
-.gallery__btn--prev, .gallery__btn--next {
+.gallery__btn--prev, .gallery__btn--next, .lightbox__btn--prev, .lightbox__btn--next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -488,7 +488,7 @@ main {
   right: 1rem;
 }
 
-.gallery__thumbnails, .lightbox__thumbnails {
+.gallery__thumbnails {
   display: none;
 }
 
@@ -701,7 +701,7 @@ main {
     padding-inline: 3rem;
   }
 
-  .gallery {
+  .gallery, .lightbox {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
@@ -717,19 +717,19 @@ main {
     display: none;
   }
 
-  .gallery__thumbnails {
+  .gallery__thumbnails, .lightbox__thumbnails {
     width: 100%;
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 
-  .gallery__thumbnails li {
+  .gallery__thumbnails li, .lightbox__thumbnails li {
     list-style: none;
     flex: 1;
   }
 
-  .gallery__thumb {
+  .gallery__thumb, .lightbox__thumb {
     width: 100%;
     position: relative;
     border-radius: 15%;
@@ -738,11 +738,11 @@ main {
     outline-offset: 2px;
   }
 
-  .gallery__thumb.active {
+  .gallery__thumb.active, .lightbox__thumb.active {
     outline-color: var(--clr-orange);
   }
 
- .gallery__thumb.active::after {
+  .gallery__thumb.active::after, .lightbox__thumb.active::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -750,7 +750,7 @@ main {
     border-radius: 15%;
   }
 
-  .gallery__thumb img {
+  .gallery__thumb img, .lightbox__thumb img {
     display: block;
     width: 100%;
     height: 5rem;
@@ -785,11 +785,58 @@ main {
   }
 
   .stepper {
-    padding-block: 0.1rem;
+    padding-block: -0.1rem;
     margin-block-end: 0;
   }
 
   .lightbox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 600;
+    overflow-y: auto;
+  } 
+
+  .lightbox__inner {
+    position: relative;
+    width: min(90%, 44rem); /* doesn't get too wide on large screens */
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .lightbox__active--image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 3%;
+  }
+
+  .lightbox__thumb img {
+    width: 100%;
+    height: 8rem;
+  }
+
+  .gallery__btn--prev img, .gallery__btn--next img {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .lightbox__btn--prev {
+    left: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .lightbox__btn--next {
+    right: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .hide {
     display: none;
   }
 }

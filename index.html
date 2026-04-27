@@ -24,7 +24,7 @@
             <img class="header__logo--image" src="assets/images/icons/logo.svg" alt="" width="65" height="40">
           </a>
         </div>
-        <div class="nav__drawer">
+        <div class="nav__drawer hide">
           <nav class="nav__links" aria-label="Header navigation">
             <ul class="nav__links--group">
               <li><a href="#" class="nav__links--link">Collections</a></li>
@@ -58,7 +58,7 @@
       </div>
     </header>
 
-    <div class="cart__modal open" role="dialog" aria-label="Shopping cart">
+    <div class="cart__modal hide" role="dialog" aria-label="Shopping cart">
       <p class="cart__modal--title">Cart</p>
       <div class="cart__modal--body">
         <div class="cart__item">
@@ -152,7 +152,7 @@
         <button class="lightbox__close">
           <img src="assets/images/icons/icon-close.svg" alt="">
         </button>
-        <img class="lightbox__active--image">
+        <img src="assets/images/products/image-product-1.jpg" class="lightbox__active--image">
         <button class="lightbox__btn--prev">
           <img src="assets/images/icons/icon-previous.svg" alt="">
         </button>
@@ -161,7 +161,7 @@
         </button>
         <ul class="lightbox__thumbnails">
           <li>
-            <button class="lightbox__thumb" data-index="0">
+            <button class="lightbox__thumb active" data-index="0">
               <img src="assets/images/products/image-product-1-thumbnail.jpg" alt="">
             </button>
           </li>
