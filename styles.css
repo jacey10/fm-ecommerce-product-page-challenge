@@ -622,6 +622,10 @@ main {
     padding-inline: 10rem;
   }
 
+  body.lightbox-open {
+    overflow: hidden;
+  }
+
   .header {
     height: 6rem;
     width: 100%;
@@ -798,15 +802,16 @@ main {
     justify-content: flex-start;
     padding-block: 3rem;
     z-index: 600;
-    overflow-y: auto;
   } 
 
   .lightbox__inner {
     position: relative;
-    width: min(90%, 40rem); /* doesn't get too wide on large screens */
+    width: min(90%, 30rem); /* doesn't get too wide on large screens */
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
   }
 
@@ -824,7 +829,7 @@ main {
 
   .lightbox__thumb img {
     width: 100%;
-    height: 8rem;
+    height: 6rem;
   }
 
   .lightbox__btn--prev img, .lightbox__btn--next img {
