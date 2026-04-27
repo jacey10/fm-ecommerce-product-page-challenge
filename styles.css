@@ -615,7 +615,7 @@ main {
 @media screen and (min-width:48rem) {
 
   body {
-    padding-inline: 1rem;
+    padding-inline: 10rem;
   }
 
   .header {
@@ -676,16 +676,6 @@ main {
     flex-direction: row;
     gap: 2rem;
   }
-
-  /*.header__cart--icon svg {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .header__cart--badge {
-    left: 1.2rem;
-    padding: 0.2rem 0.7rem;
-  }*/
 
   .cart__modal {
     display: none;
