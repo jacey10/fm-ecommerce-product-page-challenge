@@ -148,6 +148,8 @@ textarea:not([rows]) {
 /* ===  BASE STYLES === */
 
 body {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100svh;
   font-family: var(--ff-body);
@@ -615,6 +617,8 @@ main {
 @media screen and (min-width:48rem) {
 
   body {
+    align-items: center;
+    justify-content: center;
     padding-inline: 10rem;
   }
 
@@ -700,7 +704,7 @@ main {
   .gallery {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.6rem;
     height: 100%;
   }
 
@@ -781,7 +785,7 @@ main {
   }
 
   .stepper {
-    padding-block: 0.2rem;
+    padding-block: 0.1rem;
     margin-block-end: 0;
   }
 
