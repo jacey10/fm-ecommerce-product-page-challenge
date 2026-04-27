@@ -388,6 +388,19 @@ button {
   flex-direction: column;
 }
 
+@media screen and (max-width: 20rem) {
+  .cart__item {
+    gap: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 22.5rem) {
+  .cart__item--name {
+    font-size: 0.85rem;
+    gap: 1.5rem;
+  }
+}
+
 .cart__item--name, .cart__quantity {
   color: var(--clr-dark-grayish-blue);
 }
