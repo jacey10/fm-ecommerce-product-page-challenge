@@ -14,7 +14,7 @@
   <body>
     <header class="header">
       <div class="header__left--container">
-        <button type="button" class="nav__toggle open" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="menuOverlay">
+        <button type="button" class="nav__toggle" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="menuOverlay">
           <span class="nav__toggle--bar"></span>
           <span class="nav__toggle--bar"></span>
           <span class="nav__toggle--bar"></span>
@@ -24,7 +24,7 @@
             <img class="header__logo--image" src="assets/images/icons/logo.svg" alt="" width="65" height="40">
           </a>
         </div>
-        <div class="nav__drawer is-open">
+        <div class="nav__drawer">
           <nav class="nav__links" aria-label="Header navigation">
             <ul class="nav__links--group">
               <li><a href="#" class="nav__links--link">Collections</a></li>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="backdrop is-open" id="backdrop" aria-hidden="true"></div>
+      <div class="backdrop" id="backdrop" aria-hidden="true"></div>
 
       <div class="header__right--container">
         <button class="header__cart--btn" aria-label="Open cart">
@@ -78,7 +78,7 @@
       </div>
     </div>
 
-    <main>
+    <main class="main__product--page">
       <section class="gallery">
         <div class="gallery__main">
           <img class="gallery__active--image" src="assets/images/products/image-product-1.jpg" alt="Product image" width="1000" height="1000">
@@ -91,23 +91,23 @@
         </div>
         <ul class="gallery__thumbnails">
           <li>
-            <button class="gallery__thumb" data-index="0">
-              <img src="assets/images/products/image-product-1-thumbnail.jpg" alt="">
+            <button class="gallery__thumb active" data-index="0">
+              <img src="assets/images/products/image-product-1-thumbnail.jpg" alt="View 1">
             </button>
           </li>
           <li>
             <button class="gallery__thumb" data-index="1">
-              <img src="assets/images/products/image-product-2-thumbnail.jpg" alt="">
+              <img src="assets/images/products/image-product-2-thumbnail.jpg" alt="View 2">
             </button>
           </li>
           <li>
             <button class="gallery__thumb" data-index="2">
-              <img src="assets/images/products/image-product-3-thumbnail.jpg" alt="">
+              <img src="assets/images/products/image-product-3-thumbnail.jpg" alt="View 3">
             </button>
           </li>
           <li>
             <button class="gallery__thumb" data-index="3">
-              <img src="assets/images/products/image-product-4-thumbnail.jpg" alt="">
+              <img src="assets/images/products/image-product-4-thumbnail.jpg" alt="View 4">
             </button>
           </li>
         </ul>
@@ -147,7 +147,7 @@
       </section>
     </main>
 
-    <div class="lightbox hidden">
+    <div class="lightbox hide">
       <div class="lightbox__inner">
         <button class="lightbox__close">
           <img src="assets/images/icons/icon-close.svg" alt="">
