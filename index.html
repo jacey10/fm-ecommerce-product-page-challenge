@@ -40,7 +40,7 @@
       <div class="backdrop" id="backdrop" aria-hidden="true"></div>
 
       <div class="header__right--container">
-        <button class="header__cart--btn" aria-label="Open cart">
+        <button type="button" class="header__cart--btn" aria-label="Open cart">
           
           <span class="header__cart--icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -52,13 +52,13 @@
         
           <span class="header__cart--badge hidden">0</span>
         </button>
-        <button class="user__avatar--btn" aria-label="Account">
+        <button type="button" class="user__avatar--btn" aria-label="Account">
           <img class="user__avatar" src="assets/images/avatar/image-avatar.png" alt="User avatar" width="100" height="100">
         </button>
       </div>
     </header>
 
-    <div class="cart__modal hide" role="dialog" aria-label="Shopping cart">
+    <div class="cart__modal" role="dialog" aria-label="Shopping cart">
       <p class="cart__modal--title">Cart</p>
       <div class="cart__modal--body">
         <div class="cart__item">
@@ -82,31 +82,31 @@
       <section class="gallery">
         <div class="gallery__main">
           <img class="gallery__active--image" src="assets/images/products/image-product-1.jpg" alt="Product image" width="1000" height="1000">
-          <button class="gallery__btn--prev">
+          <button type="button" class="gallery__btn--prev">
             <img src="assets/images/icons/icon-previous.svg" alt="">
           </button>
-          <button class="gallery__btn--next">
+          <button type="button" class="gallery__btn--next">
             <img src="assets/images/icons/icon-next.svg" alt="">
           </button>
         </div>
         <ul class="gallery__thumbnails">
           <li>
-            <button class="gallery__thumb active" data-index="0">
+            <button type="button" class="gallery__thumb active" data-index="0">
               <img src="assets/images/products/image-product-1-thumbnail.jpg" alt="View 1">
             </button>
           </li>
           <li>
-            <button class="gallery__thumb" data-index="1">
+            <button type="button" class="gallery__thumb" data-index="1">
               <img src="assets/images/products/image-product-2-thumbnail.jpg" alt="View 2">
             </button>
           </li>
           <li>
-            <button class="gallery__thumb" data-index="2">
+            <button type="button" class="gallery__thumb" data-index="2">
               <img src="assets/images/products/image-product-3-thumbnail.jpg" alt="View 3">
             </button>
           </li>
           <li>
-            <button class="gallery__thumb" data-index="3">
+            <button type="button" class="gallery__thumb" data-index="3">
               <img src="assets/images/products/image-product-4-thumbnail.jpg" alt="View 4">
             </button>
           </li>
@@ -128,12 +128,12 @@
         </div>
         <div class="quantity__cart">
           <div class="stepper">
-            <button class="stepper__minus"><img src="assets/images/icons/icon-minus.svg" alt=""></button>
+            <button type="button" class="stepper__minus"><img src="assets/images/icons/icon-minus.svg" alt=""></button>
             <span class="stepper__count">0</span>
-            <button class="stepper__plus"><img src="assets/images/icons/icon-plus.svg" alt=""></button>
+            <button type="button" class="stepper__plus"><img src="assets/images/icons/icon-plus.svg" alt=""></button>
           </div>
           
-          <button class="cart__btn">
+          <button type="button" class="cart__btn" id="addToCartBtn">
             <span class="cart__btn--icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -152,7 +152,7 @@
 
         <div class="lightbox__image--wrapper">
 
-          <button class="lightbox__close--btn">
+          <button type="button" class="lightbox__close--btn">
             <svg class="lightbox__close--icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M18 6L6 18M6 6L18 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
             </svg>
@@ -160,32 +160,32 @@
           
           <img src="assets/images/products/image-product-1.jpg" class="lightbox__active--image">
 
-          <button class="lightbox__btn--prev">
+          <button type="button" class="lightbox__btn--prev">
             <img src="assets/images/icons/icon-previous.svg" alt="">
           </button>
-          <button class="lightbox__btn--next">
+          <button type="button" class="lightbox__btn--next">
             <img src="assets/images/icons/icon-next.svg" alt="">
           </button>
         </div>
 
         <ul class="lightbox__thumbnails">
           <li>
-            <button class="lightbox__thumb active" data-index="0">
+            <button type="button" class="lightbox__thumb active" data-index="0">
               <img src="assets/images/products/image-product-1-thumbnail.jpg" alt="">
             </button>
           </li>
           <li>
-            <button class="lightbox__thumb" data-index="1">
+            <button type="button" class="lightbox__thumb" data-index="1">
               <img src="assets/images/products/image-product-2-thumbnail.jpg" alt="">
             </button>
           </li>
           <li>
-            <button class="lightbox__thumb" data-index="2">
+            <button type="button" class="lightbox__thumb" data-index="2">
               <img src="assets/images/products/image-product-3-thumbnail.jpg" alt="">
             </button>
           </li>
           <li>
-            <button class="lightbox__thumb" data-index="3">
+            <button type="button" class="lightbox__thumb" data-index="3">
               <img src="assets/images/products/image-product-4-thumbnail.jpg" alt="">
             </button>
           </li>
