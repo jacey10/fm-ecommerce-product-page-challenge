@@ -615,7 +615,7 @@ main {
 @media screen and (min-width:48rem) {
 
   body {
-    padding-inline: 14rem;
+    padding-inline: 1rem;
   }
 
   .header {
