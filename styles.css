@@ -605,13 +605,9 @@ main {
   color: var(--clr-very-dark-blue); 
 }
 
-.hide {
+.hidden {
   display: none;
 }
-
-/*.hidden {
-  display: none;
-}*/
 
 
 @media screen and (min-width:48rem) {
@@ -624,11 +620,6 @@ main {
 
   body.lightbox-open {
     overflow: hidden;
-  }
-
-  .header {
-    height: 6rem;
-    width: 100%;
   }
 
   .header__left--container {
@@ -742,6 +733,11 @@ main {
     outline-offset: 2px;
   }
 
+  .gallery__thumb:hover, .lightbox__thumb:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
   .gallery__thumb.active, .lightbox__thumb.active {
     outline-color: var(--clr-orange);
   }
@@ -769,7 +765,7 @@ main {
   }
 
   .description {
-    font-size: clamp(0.9rem, 1.2vw, 2rem);
+    font-size: clamp(0.9rem, 1vw, 2rem);
     text-wrap: pretty;
   }
 
@@ -802,17 +798,22 @@ main {
     justify-content: flex-start;
     padding-block: 3rem;
     z-index: 600;
-  } 
+    overflow-y: auto;
+  }
+
+  .lightbox.hidden {
+    display: none;
+  }
 
   .lightbox__inner {
     position: relative;
-    width: min(90%, 30rem); /* doesn't get too wide on large screens */
+    width: min(90%, 35rem);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .lightbox__image--wrapper {
@@ -825,6 +826,10 @@ main {
     max-width: 100%;
     object-fit: contain;
     border-radius: 3%;
+  }
+
+  .lightbox__thumbnails {
+    padding-inline: 2.5rem;
   }
 
   .lightbox__thumb img {
@@ -840,7 +845,7 @@ main {
   .lightbox__close--btn {
     position: absolute;
     top: -2.8rem;
-    right: 0;
+    right: -0.3rem;
 
     width: 2.5rem;
     height: 2.5rem;
@@ -869,9 +874,5 @@ main {
   .lightbox__btn--next {
     right: -2rem;
     padding: 1rem;
-  }
-
-  .hide {
-    display: none;
   }
 }
