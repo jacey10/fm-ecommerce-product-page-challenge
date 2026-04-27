@@ -803,7 +803,7 @@ main {
 
   .lightbox__inner {
     position: relative;
-    width: min(90%, 44rem); /* doesn't get too wide on large screens */
+    width: min(90%, 40rem); /* doesn't get too wide on large screens */
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
