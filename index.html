@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+      <div class="backdrop is-open" id="backdrop" aria-hidden="true"></div>
 
       <div class="header__right--container">
         <button class="header__cart--btn" aria-label="Open cart">
@@ -147,18 +147,27 @@
       </section>
     </main>
 
-    <div class="lightbox hide">
+    <div class="lightbox">
       <div class="lightbox__inner">
-        <button class="lightbox__close">
-          <img src="assets/images/icons/icon-close.svg" alt="">
-        </button>
-        <img src="assets/images/products/image-product-1.jpg" class="lightbox__active--image">
-        <button class="lightbox__btn--prev">
-          <img src="assets/images/icons/icon-previous.svg" alt="">
-        </button>
-        <button class="lightbox__btn--next">
-          <img src="assets/images/icons/icon-next.svg" alt="">
-        </button>
+
+        <div class="lightbox__image--wrapper">
+
+          <button class="lightbox__close--btn">
+            <svg class="lightbox__close--icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6L18 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          
+          <img src="assets/images/products/image-product-1.jpg" class="lightbox__active--image">
+
+          <button class="lightbox__btn--prev">
+            <img src="assets/images/icons/icon-previous.svg" alt="">
+          </button>
+          <button class="lightbox__btn--next">
+            <img src="assets/images/icons/icon-next.svg" alt="">
+          </button>
+        </div>
+
         <ul class="lightbox__thumbnails">
           <li>
             <button class="lightbox__thumb active" data-index="0">
