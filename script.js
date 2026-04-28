@@ -45,7 +45,7 @@ const elements = {
   lightbox: document.querySelector('.lightbox'),
   lightboxImage: document.querySelector('.lightbox__active--image'),
   lightboxThumbnails: document.querySelectorAll('.lightbox__thumb'),
-  lightboxClose: document.querySelector('.lightbox__btn--close'),
+  lightboxClose: document.querySelector('.lightbox__close--btn'),
   lightboxPrev: document.querySelector('.lightbox__btn--prev'),
   lightboxNext: document.querySelector('.lightbox__btn--next'),
   
@@ -65,7 +65,7 @@ const elements = {
   // Product info
   productName: document.querySelector('.product__title'),
   productCompany: document.querySelector('.brand'),
-  productPrice: document.querySelector('.sles__price'),
+  productPrice: document.querySelector('.sales__price'),
   productOriginalPrice: document.querySelector('.original__price'),
   productDiscount: document.querySelector('.discount__badge'),
   productDescription: document.querySelector('.description')
@@ -77,7 +77,8 @@ const elements = {
 
 function init() {
   renderProductInfo();
-  renderThumbnails();
+  renderThumbnails(elements.galleryThumbnails);
+  renderThumbnails(elements.lightboxThumbnails);
   updateMainImage();
   updateQuantityDisplay();
   attachEventListeners();
