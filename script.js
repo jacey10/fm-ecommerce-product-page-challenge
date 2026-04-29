@@ -35,16 +35,28 @@ let state = {
 // ==========================================
 
 const elements = {
+
+  // Navigation
+  menuButton: document.querySelector('.nav__toggle'),
+  menuOverlay: document.querySelector('.nav__drawer'),
+
+  // Product Info
+  productCompany: document.querySelector('.brand'),
+  productName: document.querySelector('.product__title'),
+  productDescription: document.querySelector('.description'),
+  productPrice: document.querySelector('.sales__price'),
+  productOriginalPrice: document.querySelector('.original__price'),
+  productDiscount: document.querySelector('.discount__badge'),
+
   // Main image gallery
   mainImage: document.querySelector('.gallery__active--image'),
-  thumbnails: document.querySelectorAll('.gallery__thumb'),
+  galleryThumbnails: document.querySelector('.gallery__thumbnails'),
   prevArrow: document.querySelector('.gallery__btn--prev'),
   nextArrow: document.querySelector('.gallery__btn--next'),
   
   // Lightbox
-  lightbox: document.querySelector('.lightbox'),
   lightboxImage: document.querySelector('.lightbox__active--image'),
-  lightboxThumbnails: document.querySelectorAll('.lightbox__thumb'),
+  lightboxThumbnails: document.querySelector('.lightbox__thumbnails'),
   lightboxClose: document.querySelector('.lightbox__close--btn'),
   lightboxPrev: document.querySelector('.lightbox__btn--prev'),
   lightboxNext: document.querySelector('.lightbox__btn--next'),
@@ -59,16 +71,6 @@ const elements = {
   cartIcon: document.querySelector('.header__cart--btn'),
   cartDropdown: document.querySelector('.cart__modal'),
   cartCount: document.querySelector('.header__cart--badge'),
-  cartItem: document.querySelector('.cart__item'),
-  cartTotal: document.querySelector('.cart__total'),
-  
-  // Product info
-  productName: document.querySelector('.product__title'),
-  productCompany: document.querySelector('.brand'),
-  productPrice: document.querySelector('.sales__price'),
-  productOriginalPrice: document.querySelector('.original__price'),
-  productDiscount: document.querySelector('.discount__badge'),
-  productDescription: document.querySelector('.description')
 };
 
 // ==========================================
@@ -77,9 +79,34 @@ const elements = {
 
 function init() {
   renderProductInfo();
+  updateQuantityDisplay();
+  updateMainImage();
   renderThumbnails(elements.galleryThumbnails);
   renderThumbnails(elements.lightboxThumbnails);
-  updateMainImage();
-  updateQuantityDisplay();
   attachEventListeners();
 }
+
+function renderProductInfo() {
+  elements.productCompany.textContent = product.company;
+  elements.productName.textContent = product.name;
+  elements.productDescription.textContent = product.description;
+  elements.productPrice.textContent = `$${product.price.toFixed(2)}`;
+  elements.productOriginalPrice.textContent = `$${product.originalPrice.toFixed(2)}`;
+  elements.productDiscount.textContent = `${product.discount}%`;
+}
+
+function updateQuantityDisplay () {
+  elements.quantityValue.textContent = state.quantity;
+}
+
+function updateMainImage () {
+  const index = state.currentImageIndex;
+  const imageSrc = product.images[index];
+
+  elements.mainImage.src = imageSrc;
+  elements.lightboxImage.src = imageSrc;
+}
+
+
+
+init();
