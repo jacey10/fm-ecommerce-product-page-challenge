@@ -81,8 +81,8 @@ function init() {
   renderProductInfo();
   updateQuantityDisplay();
   updateMainImage();
-  renderThumbnails(elements.galleryThumbnails);
-  renderThumbnails(elements.lightboxThumbnails);
+  renderThumbnails(elements.galleryThumbnails, "gallery__thumb");
+  renderThumbnails(elements.lightboxThumbnails, "lightbox__thumb");
   attachEventListeners();
 }
 
@@ -102,11 +102,18 @@ function updateQuantityDisplay () {
 function updateMainImage () {
   const index = state.currentImageIndex;
   const imageSrc = product.images[index];
-
   elements.mainImage.src = imageSrc;
-  elements.lightboxImage.src = imageSrc;
 }
 
-
+function renderThumbnails(container, className) {
+  const html = product.thumbnails.map((src, index) => `
+    <li>
+      <button type="button" class="${className} ${index === state.currentImageIndex ? 'active' : ''}" data-index="${index}">
+        <img src="${src}" alt="">
+      </button>
+    </li>
+  `).join('');
+  container.innerHTML = html;
+}
 
 init();
