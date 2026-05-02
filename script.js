@@ -26,6 +26,7 @@ const product = {
 
 let state = {
   currentImageIndex: 0,
+  lightboxIndex: 0,
   quantity: 0,
   cart: []
 };
@@ -80,11 +81,15 @@ const elements = {
 function init() {
   renderProductInfo();
   updateQuantityDisplay();
-  updateMainImage();
+  updateGallery(0);
   renderThumbnails(elements.galleryThumbnails, "gallery__thumb");
   renderThumbnails(elements.lightboxThumbnails, "lightbox__thumb");
   attachEventListeners();
 }
+
+// ==========================================
+// RENDER FUNCTIONS
+// ==========================================
 
 function renderProductInfo() {
   elements.productCompany.textContent = product.company;
@@ -99,12 +104,6 @@ function updateQuantityDisplay () {
   elements.quantityValue.textContent = state.quantity;
 }
 
-function updateMainImage () {
-  const index = state.currentImageIndex;
-  const imageSrc = product.images[index];
-  elements.mainImage.src = imageSrc;
-}
-
 function renderThumbnails(container, className) {
   const html = product.thumbnails.map((src, index) => `
     <li>
@@ -115,5 +114,131 @@ function renderThumbnails(container, className) {
   `).join('');
   container.innerHTML = html;
 }
+
+function updateGalleryImage() {
+  const index = state.currentImageIndex;
+  const imageSrc = product.images[index];
+  elements.mainImage.src = imageSrc;
+}
+
+function updateLightboxImage() {
+  const index = state.lightboxIndex;
+  const imageSrc = product.images[index];
+  elements.lightboxImage.src = imageSrc;
+}
+
+// ==========================================
+// IMAGE GALLERY FUNCTIONS
+// ==========================================
+
+function handlePrev() {
+  state.currentImageIndex = (state.currentImageIndex - 1 + product.images.length) % product.images.length;
+  updateGallery(state.currentImageIndex);
+}
+
+function handleNext() {
+  state.currentImageIndex = (state.currentImageIndex + 1) % product.images.length;
+  updateGallery(state.currentImageIndex);
+}
+
+function updateGallery(index) {
+  state.currentImageIndex = index;
+  document.querySelectorAll('.gallery__thumb').forEach((thumb) => {
+    const isActive = Number(thumb.dataset.index) === state.currentImageIndex;
+    thumb.classList.toggle('active', isActive);
+  })
+  updateGalleryImage();
+}
+
+function handleGalleryThumbnailClick(e) {
+  const thumb = e.target.closest('.gallery__thumb', '.lightbox__thumb');
+  if (!thumb) return;
+
+  const index =  Number(thumb.dataset.index);
+  updateGallery(index);
+}
+
+function handleLightboxThumbnailClick(e) {
+  const thumb = e.target.closest('.lightbox__thumb');
+  if (!thumb) return;
+
+  const index =  Number(thumb.dataset.index);
+  updateLightbox(index);
+  updateGallery(index);
+}
+
+// ==========================================
+// LIGHTBOX FUNCTIONS
+// ==========================================
+
+function openLightbox() {
+  updateLightbox(state.currentImageIndex);
+  document.querySelector('.lightbox').classList.remove('hidden');
+  document.body.classList.add('menu-open');
+}
+
+function closeLightbox() {
+  updateGallery(state.lightboxIndex)
+  document.querySelector('.lightbox').classList.add('hidden');
+  document.body.classList.remove('menu-open');
+}
+
+function handleLightboxPrev() {
+  state.currentImageIndex = (state.currentImageIndex - 1 + product.images.length) % product.images.length;
+  updateLightbox(state.currentImageIndex);
+}
+
+function handleLightboxNext() {
+  state.currentImageIndex = (state.currentImageIndex + 1) % product.images.length;
+  updateLightbox(state.currentImageIndex);
+}
+
+function updateLightbox(index) {
+  state.lightboxIndex = index;
+  document.querySelectorAll('.lightbox__thumb').forEach((thumb) => {
+    const isActive = Number(thumb.dataset.index) === state.lightboxIndex;
+    thumb.classList.toggle('active', isActive);
+  })
+  updateLightboxImage();
+}
+
+// ==========================================
+// QUANTITY FUNCTIONS
+// ==========================================
+
+function increaseQuantity() {
+  state.quantity++;
+  updateQuantityDisplay();
+}
+
+function decreaseQuantity() {
+  if (state.quantity > 0) {
+    state.quantity--;
+    updateQuantityDisplay();
+  }
+}
+
+// ==========================================
+// EVENT LISTENERS 
+// ==========================================
+
+function attachEventListeners() {
+  elements.prevArrow.addEventListener('click', handlePrev);
+  elements.nextArrow.addEventListener('click', handleNext);
+  elements.mainImage.addEventListener('click', openLightbox);
+  elements.lightboxClose.addEventListener('click', closeLightbox);
+  elements.lightboxPrev.addEventListener('click', handleLightboxPrev);
+  elements.lightboxNext.addEventListener('click', handleLightboxNext);
+  document.addEventListener('click', handleGalleryThumbnailClick);
+  document.addEventListener('click', handleLightboxThumbnailClick);
+
+  // Quantity
+  
+  elements.quantityMinus.addEventListener('click', decreaseQuantity);
+  elements.quantityPlus.addEventListener('click', increaseQuantity);
+  
+}
+
+
 
 init();

@@ -295,7 +295,7 @@ body.menu-open .nav__drawer {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 200;
+  z-index: 400;
 }
 
 body.menu-open .backdrop {
@@ -360,7 +360,7 @@ body.menu-open .backdrop {
   z-index: 100;
 }
 
-.cart__modal.open {
+.body.cart-open .cart__modal {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
   pointer-events: all;
@@ -499,7 +499,7 @@ main {
   right: 1rem;
 }
 
-.gallery__thumbnails {
+.gallery__thumbnails, .lightbox__thumbnails {
   display: none;
 }
 
@@ -629,6 +629,10 @@ main {
     padding-inline: 10rem;
   }
 
+  .header {
+    background: var(--clr-white);
+  }
+
   body.lightbox-open {
     overflow: hidden;
   }
@@ -642,19 +646,8 @@ main {
     right: 0;
   }
 
-  .header .nav__bar {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-  }
-  
   .nav__toggle {
     display: none;
-  }
-
-  .backdrop.is-open {
-    z-index: 500;
   }
 
   .nav__links {
@@ -683,6 +676,7 @@ main {
   }
   
   .nav__links--group {
+    background: var(--clr-white);
     flex-direction: row;
     gap: 2rem;
   }
@@ -812,7 +806,7 @@ main {
     overflow-y: auto;
   }
 
-  .lightbox.hidden {
+  .hidden {
     display: none;
   }
 
