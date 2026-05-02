@@ -164,7 +164,6 @@ function handleLightboxThumbnailClick(e) {
 
   const index =  Number(thumb.dataset.index);
   updateLightbox(index);
-  updateGallery(index);
 }
 
 // ==========================================
@@ -223,22 +222,26 @@ function decreaseQuantity() {
 // ==========================================
 
 function attachEventListeners() {
+  // Gallery
   elements.prevArrow.addEventListener('click', handlePrev);
   elements.nextArrow.addEventListener('click', handleNext);
-  elements.mainImage.addEventListener('click', openLightbox);
+  document.addEventListener('click', handleGalleryThumbnailClick);
+
+  // Lightbox
+  elements.mainImage.addEventListener('click', () => {
+    if (window.innerWidth >= 768) {
+      openLightbox();
+    }
+  });
   elements.lightboxClose.addEventListener('click', closeLightbox);
   elements.lightboxPrev.addEventListener('click', handleLightboxPrev);
   elements.lightboxNext.addEventListener('click', handleLightboxNext);
-  document.addEventListener('click', handleGalleryThumbnailClick);
   document.addEventListener('click', handleLightboxThumbnailClick);
 
   // Quantity
-  
   elements.quantityMinus.addEventListener('click', decreaseQuantity);
   elements.quantityPlus.addEventListener('click', increaseQuantity);
   
 }
-
-
 
 init();
