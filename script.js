@@ -40,7 +40,7 @@ const elements = {
   // Navigation
   menuButton: document.querySelector('.nav__toggle'),
   menuOverlay: document.querySelector('.nav__drawer'),
-  backdrop: document.getElementById('backdrop'),
+  backdrop: document.querySelector('.backdrop'),
 
   // Product Info
   productCompany: document.querySelector('.brand'),
@@ -132,12 +132,10 @@ function updateLightboxImage() {
 // MOBILE NAVIGATION
 // ==========================================
 
-function openNav() {
-  document.body.classList.toggle('mobile-menu-open');
-  menuBtn.setAttribute('aria-expanded', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
+function toggleNav() {
+  document.body.classList.toggle('menu-open');
+  elements.backdrop.classList.toggle('mobile-menu-active');
 }
-
 
 // ==========================================
 // IMAGE GALLERY FUNCTIONS
@@ -184,14 +182,14 @@ function handleLightboxThumbnailClick(e) {
 
 function openLightbox() {
   updateLightbox(state.currentImageIndex);
-  document.querySelector('.lightbox').classList.remove('hidden');
   document.body.classList.add('lightbox-open');
+  elements.backdrop.classList.add('lightbox-active');
 }
 
 function closeLightbox() {
   updateGallery(state.lightboxIndex)
-  document.querySelector('.lightbox').classList.add('hidden');
   document.body.classList.remove('lightbox-open');
+  elements.backdrop.classList.remove('lightbox-active');
 }
 
 function handleLightboxPrev() {
@@ -235,11 +233,7 @@ function decreaseQuantity() {
 
 function attachEventListeners() {
   // Mobile Navigation
-  elements.menuButton.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      openNav();
-    }
-  });
+  elements.menuButton.addEventListener('click', toggleNav);
 
   // Gallery
   elements.prevArrow.addEventListener('click', handlePrev);
