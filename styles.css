@@ -147,6 +147,10 @@ textarea:not([rows]) {
 
 /* ===  BASE STYLES === */
 
+* {
+  outline: 1px solid red;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -181,6 +185,7 @@ body {
 }
 
 .header__right--container {
+  position: relative;
   right: 1.6rem;
   gap: 1.5rem;
 }
@@ -349,7 +354,7 @@ body.menu-open .nav__drawer {
   z-index: 100;
 }
 
-.body.cart-open .cart__modal {
+body.cart-open .cart__modal {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
   pointer-events: all;
@@ -698,10 +703,19 @@ main {
   }
 
   .cart__modal {
-    display: none;
-    top: 6.5rem;
-    left: 88%;
-    width: 20%;
+    position: fixed;
+    top: auto;
+    left: auto;
+    transform: none;
+    opacity: 0;
+    pointer-events: none;
+    width: 22.5rem;
+    z-index: 400;
+  }
+
+  body.cart-open .cart__modal {
+    opacity: 1;
+    pointer-events: all;
   }
 
   .user__avatar--btn {

@@ -137,13 +137,6 @@ function toggleNav() {
   elements.backdrop.classList.toggle('mobile-menu-active');
 }
 
-function backdropClose(e) {
-  if (e.target === elements.backdrop) {
-    elements.backdrop.classList.remove('mobile-menu-active');
-    document.body.classList.remove('menu-open');
-  }
-}
-
 // ==========================================
 // IMAGE GALLERY FUNCTIONS
 // ==========================================
@@ -260,22 +253,82 @@ function addToCart() {
     state.cart.push(cartItem);
   }
 
-  updateCart();
   state.quantity = 0;
   updateQuantityDisplay();
 
-  // Show cart dropdown
-  elements.cartDropdown.classList.add('active');
-  
-  // Hide cart dropdown after 3 seconds
-  setTimeout(() => {
-    elements.cartDropdown.classList.remove('active');
-  }, 3000);
+  renderCart();
 }
 
-function toggleCartDropdown() {
-  elements.cartDropdown.classList.toggle('active');
+/*function getCartTotal() {
+  return state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+}*/
+
+function renderCartBadge() {
+  const badge = elements.cartCount;
+  if (!badge) return;
+
+  const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  badge.textContent = totalItems;
+  badge.classList.toggle('hidden', totalItems === 0);
 }
+
+function renderCartItems() {
+  const body = document.querySelector('.cart__modal--body');
+  
+  if (state.cart.length === 0) {
+    body.innerHTML = '<p class="cart__empty">Your cart is empty</p>';
+    return;
+  }
+
+  const itemsHTML = state.cart.map(item => `
+    <div class="cart__item" data-id="${item.id}">
+      <img class="cart__item--img" src="${item.image}" width="50" height="50" alt="${item.name}">
+      <div class="cart__item--info">
+        <p class="cart__item--name">${item.name}</p>
+        <p class="cart__item--pricing">
+          <span class="cart__quantity">$${item.price.toFixed(2)} x ${item.quantity}</span>
+          <span class="cart__total">$${(item.price * item.quantity).toFixed(2)}</span>
+        </p>
+      </div>
+      <button type="button" class="delete__btn" data-id="${item.id}">
+        <img src="assets/images/icons/icon-delete.svg" alt="Remove item">
+      </button>
+    </div>
+    `).join('');
+    
+    body.innerHTML = itemsHTML + `
+    <button type="button" class="checkout__btn">Checkout</button>
+  `;
+
+  document.querySelectorAll('.delete__btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = parseInt(e.currentTarget.dataset.id);
+      removeFromCart(id);
+    });
+  });
+}
+
+function removeFromCart(productId) {
+  state.cart = state.cart.filter(item => item.id !== productId);
+  renderCart();
+}
+
+function renderCart() {
+  renderCartBadge();
+  renderCartItems();
+}
+
+function openCartModal() {
+  if (window.innerWidth >= 768) {
+    const rect = elements.cartIcon.getBoundingClientRect();
+    elements.cartDropdown.style.top = `${rect.bottom + 8}px`;
+    elements.cartDropdown.style.left = `${rect.left}px`;
+  }
+  renderCart();
+  document.body.classList.toggle('cart-open');
+}
+
 
 // ==========================================
 // EVENT LISTENERS 
@@ -284,7 +337,7 @@ function toggleCartDropdown() {
 function attachEventListeners() {
   // Mobile Navigation
   elements.menuButton.addEventListener('click', toggleNav);
-  elements.backdrop.addEventListener('click', backdropClose);
+  elements.backdrop.addEventListener('click', toggleNav);
 
   // Gallery
   elements.prevArrow.addEventListener('click', handlePrev);
@@ -308,7 +361,7 @@ function attachEventListeners() {
 
   // Cart
   elements.addToCartBtn.addEventListener('click', addToCart);
-  elements.cartIcon.addEventListener('click', toggleCartDropdown);
+  elements.cartIcon.addEventListener('click', openCartModal);
 }
 
 init();
