@@ -462,6 +462,8 @@ main {
   max-width: 100%;
   height: 45vh;
   object-fit: cover;
+  cursor: pointer;
+  pointer-events: all;
 }
 
 .gallery__btn--prev, .gallery__btn--next, .lightbox__btn--prev, .lightbox__btn--next {

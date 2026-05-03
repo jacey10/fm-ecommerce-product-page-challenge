@@ -82,9 +82,9 @@ const elements = {
 function init() {
   renderProductInfo();
   updateQuantityDisplay();
-  updateGallery(0);
   renderThumbnails(elements.galleryThumbnails, "gallery__thumb");
   renderThumbnails(elements.lightboxThumbnails, "lightbox__thumb");
+  updateGallery(0);
   attachEventListeners();
 }
 
@@ -161,7 +161,7 @@ function updateGallery(index) {
 }
 
 function handleGalleryThumbnailClick(e) {
-  const thumb = e.target.closest('.gallery__thumb', '.lightbox__thumb');
+  const thumb = e.target.closest('.gallery__thumb');
   if (!thumb) return;
 
   const index =  Number(thumb.dataset.index);
@@ -193,13 +193,13 @@ function closeLightbox() {
 }
 
 function handleLightboxPrev() {
-  state.currentImageIndex = (state.currentImageIndex - 1 + product.images.length) % product.images.length;
-  updateLightbox(state.currentImageIndex);
+  state.lightboxIndex = (state.lightboxIndex - 1 + product.images.length) % product.images.length;
+  updateLightbox(state.lightboxIndex);
 }
 
 function handleLightboxNext() {
-  state.currentImageIndex = (state.currentImageIndex + 1) % product.images.length;
-  updateLightbox(state.currentImageIndex);
+  state.lightboxIndex = (state.lightboxIndex + 1) % product.images.length;
+  updateLightbox(state.lightboxIndex);
 }
 
 function updateLightbox(index) {
@@ -232,25 +232,20 @@ function decreaseQuantity() {
 // ==========================================
 
 function addToCart() {
-  if (state.quantity === 0) {
-    alert('Please select a quantity');
-    return;
-  }
-
-  const cartItem = {
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    quantity: state.quantity,
-    image: product.thumbnails[0]
-  };
+  if (state.quantity === 0) return;
 
   const existingItem = state.cart.find(item => item.id === product.id);
   
   if (existingItem) {
     existingItem.quantity += state.quantity;
   } else {
-    state.cart.push(cartItem);
+    state.cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: state.quantity,
+      image: product.thumbnails[0]
+    });
   }
 
   state.quantity = 0;
@@ -300,13 +295,6 @@ function renderCartItems() {
     body.innerHTML = itemsHTML + `
     <button type="button" class="checkout__btn">Checkout</button>
   `;
-
-  document.querySelectorAll('.delete__btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = parseInt(e.currentTarget.dataset.id);
-      removeFromCart(id);
-    });
-  });
 }
 
 function removeFromCart(productId) {
@@ -362,6 +350,10 @@ function attachEventListeners() {
   // Cart
   elements.addToCartBtn.addEventListener('click', addToCart);
   elements.cartIcon.addEventListener('click', openCartModal);
+  elements.cartDropdown.addEventListener('click', (e) => {
+    const btn = e.target.closest('.delete__btn');
+    if (btn) removeFromCart(parseInt(btn.dataset.id));
+  });
 }
 
 init();
