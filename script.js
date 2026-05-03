@@ -137,6 +137,13 @@ function toggleNav() {
   elements.backdrop.classList.toggle('mobile-menu-active');
 }
 
+function backdropClose(e) {
+  if (e.target === elements.backdrop) {
+    elements.backdrop.classList.remove('mobile-menu-active');
+    document.body.classList.remove('menu-open');
+  }
+}
+
 // ==========================================
 // IMAGE GALLERY FUNCTIONS
 // ==========================================
@@ -228,12 +235,56 @@ function decreaseQuantity() {
 }
 
 // ==========================================
+// CART FUNCTIONS
+// ==========================================
+
+function addToCart() {
+  if (state.quantity === 0) {
+    alert('Please select a quantity');
+    return;
+  }
+
+  const cartItem = {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    quantity: state.quantity,
+    image: product.thumbnails[0]
+  };
+
+  const existingItem = state.cart.find(item => item.id === product.id);
+  
+  if (existingItem) {
+    existingItem.quantity += state.quantity;
+  } else {
+    state.cart.push(cartItem);
+  }
+
+  updateCart();
+  state.quantity = 0;
+  updateQuantityDisplay();
+
+  // Show cart dropdown
+  elements.cartDropdown.classList.add('active');
+  
+  // Hide cart dropdown after 3 seconds
+  setTimeout(() => {
+    elements.cartDropdown.classList.remove('active');
+  }, 3000);
+}
+
+function toggleCartDropdown() {
+  elements.cartDropdown.classList.toggle('active');
+}
+
+// ==========================================
 // EVENT LISTENERS 
 // ==========================================
 
 function attachEventListeners() {
   // Mobile Navigation
   elements.menuButton.addEventListener('click', toggleNav);
+  elements.backdrop.addEventListener('click', backdropClose);
 
   // Gallery
   elements.prevArrow.addEventListener('click', handlePrev);
@@ -254,7 +305,10 @@ function attachEventListeners() {
   // Quantity
   elements.quantityMinus.addEventListener('click', decreaseQuantity);
   elements.quantityPlus.addEventListener('click', increaseQuantity);
-  
+
+  // Cart
+  elements.addToCartBtn.addEventListener('click', addToCart);
+  elements.cartIcon.addEventListener('click', toggleCartDropdown);
 }
 
 init();
