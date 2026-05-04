@@ -325,6 +325,10 @@ body.menu-open .nav__drawer {
   font-size: clamp(0.8rem, 1vw, 2rem);
 }
 
+.header__cart--badge.hidden {
+  display: none;
+}
+
 .user__avatar--btn {
   padding-inline-end: 0.8rem;
 }
@@ -608,10 +612,6 @@ main {
   color: var(--clr-very-dark-blue); 
 }
 
-.hidden {
-  display: none;
-}
-
 
 @media screen and (min-width:48rem) {
 
@@ -822,7 +822,7 @@ main {
     margin-block-end: 0;
   }
 
-  .hidden {
+  .lightbox.hidden {
     display: none;
   }
 

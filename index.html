@@ -27,7 +27,7 @@
 
         <div class="backdrop" id="backdrop" aria-hidden="true"></div>
         
-        <div class="nav__drawer">
+        <div class="nav__drawer" id="menuOverlay" aria-hidden="true">
           <nav class="nav__links" aria-label="Header navigation">
             <ul class="nav__links--group">
               <li><a href="#" class="nav__links--link">Collections</a></li>
@@ -51,7 +51,7 @@
             </svg>
           </span>
         
-          <span class="header__cart--badge hidden"></span>
+          <span class="header__cart--badge hidden" aria-live="polite"></span>
         </button>
         <button type="button" class="user__avatar--btn" aria-label="Account">
           <img class="user__avatar" src="assets/images/avatar/image-avatar.png" alt="User avatar" width="100" height="100">
@@ -59,7 +59,7 @@
       </div>
     </header>
 
-    <div class="cart__modal" role="dialog" aria-label="Shopping cart">
+    <div class="cart__modal" role="dialog" aria-label="Shopping cart" aria-hidden="true" aria-modal="true">
       <p class="cart__modal--title">Cart</p>
       <div class="cart__modal--body"></div>
     </div>
@@ -68,10 +68,10 @@
       <section class="gallery">
         <div class="gallery__main">
           <img class="gallery__active--image" alt="" width="1000" height="1000">
-          <button type="button" class="gallery__btn--prev">
+          <button type="button" class="gallery__btn--prev" aria-label="Previous image">
             <img src="assets/images/icons/icon-previous.svg" alt="">
           </button>
-          <button type="button" class="gallery__btn--next">
+          <button type="button" class="gallery__btn--next" aria-label="Next image">
             <img src="assets/images/icons/icon-next.svg" alt="">
           </button>
         </div>
@@ -91,9 +91,9 @@
         </div>
         <div class="quantity__cart">
           <div class="stepper">
-            <button type="button" class="stepper__minus"><img src="assets/images/icons/icon-minus.svg" alt=""></button>
-            <span class="stepper__count"></span>
-            <button type="button" class="stepper__plus"><img src="assets/images/icons/icon-plus.svg" alt=""></button>
+            <button type="button" class="stepper__minus" aria-label="Decrease quantity"><img src="assets/images/icons/icon-minus.svg" alt=""></button>
+            <span class="stepper__count" aria-live="polite"></span>
+            <button type="button" class="stepper__plus" aria-label="Increase quantity"><img src="assets/images/icons/icon-plus.svg" alt=""></button>
           </div>
           
           <button type="button" class="cart__btn" id="addToCartBtn">
@@ -110,23 +110,23 @@
       </section>
     </main>
 
-    <div class="lightbox hidden">
+    <div class="lightbox hidden" role="dialog" aria-label="Product image lightbox" aria-modal="true" aria-hidden="true">
       <div class="lightbox__inner">
 
         <div class="lightbox__image--wrapper">
 
-          <button type="button" class="lightbox__close--btn">
+          <button type="button" class="lightbox__close--btn" aria-label="Close lightbox">
             <svg class="lightbox__close--icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M18 6L6 18M6 6L18 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </button>
           
-          <img src="assets/images/products/image-product-1.jpg" class="lightbox__active--image" alt="">
+          <img class="lightbox__active--image" alt="">
 
-          <button type="button" class="lightbox__btn--prev">
+          <button type="button" class="lightbox__btn--prev" aria-label="Previous image">
             <img src="assets/images/icons/icon-previous.svg" alt="">
           </button>
-          <button type="button" class="lightbox__btn--next">
+          <button type="button" class="lightbox__btn--next" aria-label="Next image">
             <img src="assets/images/icons/icon-next.svg" alt="">
           </button>
         </div>
