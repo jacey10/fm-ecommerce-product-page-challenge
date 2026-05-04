@@ -151,6 +151,14 @@ function handleNext() {
   updateGallery(state.currentImageIndex);
 }
 
+function handleGalleryThumbnailClick(e) {
+  const thumb = e.target.closest('.gallery__thumb');
+  if (!thumb) return;
+
+  const index =  Number(thumb.dataset.index);
+  updateGallery(index);
+}
+
 function updateGallery(index) {
   state.currentImageIndex = index;
   document.querySelectorAll('.gallery__thumb').forEach((thumb) => {
@@ -160,21 +168,6 @@ function updateGallery(index) {
   updateGalleryImage();
 }
 
-function handleGalleryThumbnailClick(e) {
-  const thumb = e.target.closest('.gallery__thumb');
-  if (!thumb) return;
-
-  const index =  Number(thumb.dataset.index);
-  updateGallery(index);
-}
-
-function handleLightboxThumbnailClick(e) {
-  const thumb = e.target.closest('.lightbox__thumb');
-  if (!thumb) return;
-
-  const index =  Number(thumb.dataset.index);
-  updateLightbox(index);
-}
 
 // ==========================================
 // LIGHTBOX FUNCTIONS
@@ -202,6 +195,14 @@ function handleLightboxNext() {
   updateLightbox(state.lightboxIndex);
 }
 
+function handleLightboxThumbnailClick(e) {
+  const thumb = e.target.closest('.lightbox__thumb');
+  if (!thumb) return;
+
+  const index =  Number(thumb.dataset.index);
+  updateLightbox(index);
+}
+
 function updateLightbox(index) {
   state.lightboxIndex = index;
   document.querySelectorAll('.lightbox__thumb').forEach((thumb) => {
@@ -210,6 +211,7 @@ function updateLightbox(index) {
   })
   updateLightboxImage();
 }
+
 
 // ==========================================
 // QUANTITY FUNCTIONS
