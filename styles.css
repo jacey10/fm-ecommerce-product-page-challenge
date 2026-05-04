@@ -156,6 +156,10 @@ body {
   line-height: 1.5;
 }
 
+.hidden {
+  display: none;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -181,8 +185,7 @@ body {
 }
 
 .header__right--container {
-  position: relative;
-  right: 1.6rem;
+  margin-inline-end: 1.6rem;
   gap: 1.5rem;
 }
 
@@ -215,10 +218,6 @@ button {
   z-index: 500;
 }
 
-.nav__toggle.open {
-  margin-inline-start: 0.5rem;
-}
-
 body.menu-open .nav__toggle .nav__toggle--bar:nth-child(1) {
   transform: translateY(0.4375rem) rotate(45deg);
 }
@@ -230,6 +229,10 @@ body.menu-open .nav__toggle .nav__toggle--bar:nth-child(2) {
 
 body.menu-open .nav__toggle .nav__toggle--bar:nth-child(3) {
   transform: translateY(-0.4375rem) rotate(-45deg);
+}
+
+body.menu-open .nav__toggle {
+  padding-inline-start: 2rem;
 }
 
 body.menu-open {
@@ -323,10 +326,6 @@ body.menu-open .nav__drawer {
   padding: 0.1rem 0.5rem;
   color: var(--clr-white);
   font-size: clamp(0.8rem, 1vw, 2rem);
-}
-
-.header__cart--badge.hidden {
-  display: none;
 }
 
 .user__avatar--btn {
@@ -625,20 +624,6 @@ main {
     overflow: hidden;
   }
 
-  .backdrop {
-    z-index: 700;
-  }
-
-  .backdrop.mobile-menu-active {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .backdrop.lightbox-active {
-    opacity: 1;
-    pointer-events: all;
-  }
-
   .header {
     background: var(--clr-white);
     height: 5rem;
@@ -651,6 +636,10 @@ main {
   .header__right--container {
     gap: 3rem;
     right: 0;
+  }
+
+  .user__avatar--btn {
+    padding-inline-end: 0;
   }
 
   .nav__toggle {
@@ -700,6 +689,20 @@ main {
     align-items: center;
   }
 
+  .backdrop {
+    z-index: 700;
+  }
+
+  .backdrop.mobile-menu-active {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .backdrop.lightbox-active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
   .cart__modal {
     position: fixed;
     top: auto;
@@ -714,10 +717,6 @@ main {
   body.cart-open .cart__modal {
     opacity: 1;
     pointer-events: all;
-  }
-
-  .user__avatar--btn {
-    padding-inline-end: 0;
   }
 
   .main__product--page {
@@ -820,10 +819,6 @@ main {
   .stepper {
     padding-block: -0.1rem;
     margin-block-end: 0;
-  }
-
-  .lightbox.hidden {
-    display: none;
   }
 
   body.lightbox-open .lightbox {
