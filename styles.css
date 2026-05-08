@@ -450,7 +450,6 @@ body.cart-open .cart__modal {
 
 main {
   width: 100%;
-  overflow: auto;
 }
 
 .gallery {
@@ -616,8 +615,41 @@ main {
   color: var(--clr-very-dark-blue); 
 }
 
-
 @media screen and (min-width:48rem) {
+  body {
+    padding-inline: 4rem;
+  }
+
+  .header__left--container {
+    gap: 3rem;
+  }
+
+  .header__right--container {
+    gap: 3rem;
+  }
+
+  .gallery {
+    height: 70vh;
+    margin-block-start: 2rem;
+  }
+
+  .gallery__active--image {
+    height:60vh;
+    object-fit: cover;
+  }
+
+  .nav__drawer {
+    width: 40%;
+  }
+
+  body.menu-open .nav__toggle {
+    margin-inline-start: -4rem;
+  }
+
+}
+
+
+@media screen and (min-width:65.125rem) {
 
   body {
     align-items: center;
