@@ -106,6 +106,8 @@ textarea:not([rows]) {
   --clr-very-dark-blue: hsl(220, 13%, 13%);
 
   --clr-backdrop: rgba(0, 0, 0, 0.5);
+  --clr-shadow: rgba(0, 0, 0, 0.07);
+  --clr-overlay: rgba(255, 255, 255, 0.5);
   
   /* == TYPOGRAPHY == */
 
@@ -159,7 +161,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   min-height: 100svh;
   font-family: var(--ff-body);
   line-height: 1.5;
@@ -179,7 +180,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-  box-shadow: 0 var(--space-sr) 0  rgba(0,0,0,0.07);
+  box-shadow: 0 var(--space-sr) 0  var(--clr-shadow);
   z-index: 200;
 }
 
@@ -358,7 +359,7 @@ body.menu-open .nav__drawer {
   opacity: 0;
   pointer-events: none;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  box-shadow: 0.3125rem 0.3125rem 0.3125rem rgba(0,0,0,0.07);
+  box-shadow: 0.3125rem 0.3125rem 0.3125rem var(--clr-shadow);
   z-index: 100;
 }
 
@@ -449,6 +450,7 @@ body.cart-open .cart__modal {
 
 main {
   width: 100%;
+  overflow: auto;
 }
 
 .gallery {
@@ -777,7 +779,7 @@ main {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--clr-overlay);
     border-radius: 15%;
   }
 
