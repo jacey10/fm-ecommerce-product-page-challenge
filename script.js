@@ -132,9 +132,15 @@ function updateLightboxImage() {
 // MOBILE NAVIGATION
 // ==========================================
 
+
+
 function toggleNav() {
-  document.body.classList.toggle('menu-open');
+  const isOpen = document.body.classList.toggle('menu-open');
   elements.backdrop.classList.toggle('mobile-menu-active');
+
+  elements.menuButton.setAttribute('aria-expanded', isOpen);
+  elements.menuOverlay.setAttribute('aria-hidden', !isOpen);
+  elements.backdrop.setAttribute('aria-hidden', !isOpen);
 }
 
 // ==========================================
@@ -310,13 +316,18 @@ function renderCart() {
 }
 
 function openCartModal() {
+  const isOpen = document.body.classList.toggle('cart-open');
+
   if (window.innerWidth >= 768) {
     const rect = elements.cartIcon.getBoundingClientRect();
     elements.cartDropdown.style.top = `${rect.bottom + 8}px`;
     elements.cartDropdown.style.left = `${rect.left}px`;
   }
+
   renderCart();
-  document.body.classList.toggle('cart-open');
+
+  elements.cartIcon.setAttribute('aria-expanded', isOpen);
+  elements.cartDropdown.setAttribute('aria-hidden', !isOpen);
 }
 
 

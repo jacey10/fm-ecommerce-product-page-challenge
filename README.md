@@ -12,7 +12,7 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+  - [AI Collaboration](#ai-collaboration)
 - [Author](#author)
 
 
@@ -33,17 +33,16 @@ Users should be able to:
 
 ![](./assets/images/screenshots/ecomm%20desk2.png)
 ![](./assets/images/screenshots/ecomm%20desk0.png)
-![](./assets/images/screenshots/eccom%20des%20filled.png.png)
-![](./assets/images/screenshots/eccom%20mob.png.png)
+![](./assets/images/screenshots/Screenshot_20260504-204211.png)
+![](./assets/images/screenshots/Screenshot_20260504-204257.png)
+![](./assets/images/screenshots/eccom%20mob.png)
 ![](./assets/images/screenshots/ecomm%20desk2.png)
-
-
 
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: (https://github.com/jacey10/fm-ecommerce-product-page-challenge)
+- Live Site URL: (https://jacey10.github.io/fm-ecommerce-product-page-challenge/)
 
 ## My process
 
@@ -54,59 +53,58 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
-To see how you can add code snippets, see below:
+* How to structure UI updates around application state instead of scattered DOM mutations.
+* The importance of separating rendering responsibilities into focused functions.
+* How cart rendering, badge updates, and modal state can be coordinated through a single source of truth.
+* How classList.toggle() can be used to synchronize visual UI state.
+* How to debug DOM reference issues and undefined errors effectively.
+* How getBoundingClientRect() can be used for precise geometry-based positioning of floating UI elements.
+* he difference between layout-based positioning and viewport-based positioning.
+* How popovers and modals can create overflow issues when transforms and positioning are not handled carefully.
+* How ARIA attributes such as aria-expanded, aria-hidden, and aria-controls should reflect UI state changes.
+* he difference between accessibility attributes and full interaction accessibility patterns.
+* How responsive UI systems may require different interaction logic between mobile and desktop layouts.
+* How frontend architecture decisions affect scalability, maintainability, and accessibility.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+* Strengthen accessibility further with keyboard navigation, Escape key handling, and focus management for dialogs and overlays.
+* Improve component-level state management to reduce reliance on global UI classes.
+* Refactor overlay and modal systems into reusable UI utilities/components.
+* Add viewport edge detection and adaptive positioning for popovers and dropdowns.
+* Persist cart state using local storage or backend integration.
+* Expand the cart system into a complete checkout and order flow.
+* Improve responsive behavior and animation consistency across devices.
+* Continue practicing scalable frontend architecture and state-driven rendering patterns.
+* Explore reusable rendering patterns inspired by component-based frameworks like React.
+* Optimize DOM updates and event handling for cleaner, more maintainable code.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
-### Useful resources
+### AI Collaboration
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+* Used ChatGPT to debug cart rendering and modal visibility issues.
+* Refactored cart logic into smaller rendering functions (`renderCartItems`, cart badge rendering, cart state updates).
+* Improved state-driven UI rendering instead of scattered DOM mutations.
+* Debugged `undefined` errors related to cart badge updates and DOM element references.
+* Implemented dynamic cart badge visibility based on cart quantity.
+* Fixed desktop cart modal positioning using `getBoundingClientRect()` for geometry-based placement.
+* Solved cart modal overflow and animation issues with improved popover behavior.
+* Worked through responsive modal positioning for both mobile and desktop layouts.
+* Improved accessibility by synchronizing UI state with ARIA attributes (`aria-expanded`, `aria-hidden`, `aria-controls`).
+* Discussed scalable UI state management patterns for overlays, modals, and backdrops.
+* Explored accessibility considerations for dialogs, overlays, and interactive UI components.
+* Reviewed architectural trade-offs between shared UI layers vs isolated component systems.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Jacey Blog](https://www.jacey.hashnode.dev/)
+- Frontend Mentor - [@jacey10](https://www.frontendmentor.io/profile/jacey10)
+- Twitter - [@jacey_muna](https://x.com/jacey_muna)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**

@@ -41,7 +41,7 @@
       </div>
 
       <div class="header__right--container">
-        <button type="button" class="header__cart--btn" aria-label="Open cart">
+        <button type="button" class="header__cart--btn" aria-label="Open cart" aria-expanded="false" aria-controls="cartModal">
           
           <span class="header__cart--icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -59,7 +59,7 @@
       </div>
     </header>
 
-    <div class="cart__modal" role="dialog" aria-label="Shopping cart" aria-hidden="true" aria-modal="true">
+    <div id="cartModal" class="cart__modal" role="dialog" aria-label="Shopping cart" aria-hidden="true" aria-modal="true">
       <p class="cart__modal--title">Cart</p>
       <div class="cart__modal--body"></div>
     </div>
