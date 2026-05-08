@@ -128,11 +128,53 @@ function updateLightboxImage() {
   elements.lightboxImage.src = imageSrc;
 }
 
+function renderCartBadge() {
+  const badge = elements.cartCount;
+  if (!badge) return;
+
+  const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  badge.textContent = totalItems;
+  badge.classList.toggle('hidden', totalItems === 0);
+}
+
+function renderCartItems() {
+  const body = document.querySelector('.cart__modal--body');
+  
+  if (state.cart.length === 0) {
+    body.innerHTML = '<p class="cart__empty">Your cart is empty</p>';
+    return;
+  }
+
+  const itemsHTML = state.cart.map(item => `
+    <div class="cart__item" data-id="${item.id}">
+      <img class="cart__item--img" src="${item.image}" width="50" height="50" alt="${item.name}">
+      <div class="cart__item--info">
+        <p class="cart__item--name">${item.name}</p>
+        <p class="cart__item--pricing">
+          <span class="cart__quantity">$${item.price.toFixed(2)} x ${item.quantity}</span>
+          <span class="cart__total">$${(item.price * item.quantity).toFixed(2)}</span>
+        </p>
+      </div>
+      <button type="button" class="delete__btn" data-id="${item.id}">
+        <img src="assets/images/icons/icon-delete.svg" alt="Remove item">
+      </button>
+    </div>
+    `).join('');
+    
+    body.innerHTML = itemsHTML + `
+    <button type="button" class="checkout__btn">Checkout</button>
+  `;
+}
+
+function renderCart() {
+  renderCartBadge();
+  renderCartItems();
+}
+
 // ==========================================
 // MOBILE NAVIGATION
 // ==========================================
-
-
 
 function toggleNav() {
   const isOpen = document.body.classList.toggle('menu-open');
@@ -174,7 +216,6 @@ function updateGallery(index) {
   updateGalleryImage();
 }
 
-
 // ==========================================
 // LIGHTBOX FUNCTIONS
 // ==========================================
@@ -182,7 +223,9 @@ function updateGallery(index) {
 function openLightbox() {
   updateLightbox(state.currentImageIndex);
   document.body.classList.add('lightbox-open');
+  document.querySelector('.lightbox').setAttribute('aria-hidden', 'false');
   elements.backdrop.classList.add('lightbox-active');
+  elements.backdrop.setAttribute('aria-disabled', 'true');
 }
 
 function closeLightbox() {
@@ -217,7 +260,6 @@ function updateLightbox(index) {
   })
   updateLightboxImage();
 }
-
 
 // ==========================================
 // QUANTITY FUNCTIONS
@@ -266,53 +308,9 @@ function addToCart() {
   return state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }*/
 
-function renderCartBadge() {
-  const badge = elements.cartCount;
-  if (!badge) return;
-
-  const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
-
-  badge.textContent = totalItems;
-  badge.classList.toggle('hidden', totalItems === 0);
-}
-
-function renderCartItems() {
-  const body = document.querySelector('.cart__modal--body');
-  
-  if (state.cart.length === 0) {
-    body.innerHTML = '<p class="cart__empty">Your cart is empty</p>';
-    return;
-  }
-
-  const itemsHTML = state.cart.map(item => `
-    <div class="cart__item" data-id="${item.id}">
-      <img class="cart__item--img" src="${item.image}" width="50" height="50" alt="${item.name}">
-      <div class="cart__item--info">
-        <p class="cart__item--name">${item.name}</p>
-        <p class="cart__item--pricing">
-          <span class="cart__quantity">$${item.price.toFixed(2)} x ${item.quantity}</span>
-          <span class="cart__total">$${(item.price * item.quantity).toFixed(2)}</span>
-        </p>
-      </div>
-      <button type="button" class="delete__btn" data-id="${item.id}">
-        <img src="assets/images/icons/icon-delete.svg" alt="Remove item">
-      </button>
-    </div>
-    `).join('');
-    
-    body.innerHTML = itemsHTML + `
-    <button type="button" class="checkout__btn">Checkout</button>
-  `;
-}
-
 function removeFromCart(productId) {
   state.cart = state.cart.filter(item => item.id !== productId);
   renderCart();
-}
-
-function renderCart() {
-  renderCartBadge();
-  renderCartItems();
 }
 
 function openCartModal() {
