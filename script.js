@@ -24,7 +24,7 @@ const product = {
   ]
 };
 
-let state = {
+const state = {
   currentImageIndex: 0,
   lightboxIndex: 0,
   quantity: 0,
@@ -109,7 +109,7 @@ function renderThumbnails(container, className) {
   const html = product.thumbnails.map((src, index) => `
     <li>
       <button type="button" class="${className} ${index === state.currentImageIndex ? 'active' : ''}" data-index="${index}">
-        <img src="${src}" alt="">
+        <img src="${src}" alt="Product view ${index + 1}">
       </button>
     </li>
   `).join('');
@@ -182,6 +182,7 @@ function toggleNav() {
 
   elements.menuButton.setAttribute('aria-expanded', isOpen);
   elements.menuOverlay.setAttribute('aria-hidden', !isOpen);
+  elements.menuOverlay.setAttribute('inert', !isOpen);
   elements.backdrop.setAttribute('aria-hidden', !isOpen);
 }
 
@@ -223,6 +224,7 @@ function updateGallery(index) {
 function openLightbox() {
   updateLightbox(state.currentImageIndex);
   document.body.classList.add('lightbox-open');
+  document.querySelector('.lightbox').removeAttribute('inert');
   document.querySelector('.lightbox').setAttribute('aria-hidden', 'false');
   elements.backdrop.classList.add('lightbox-active');
   elements.backdrop.setAttribute('aria-disabled', 'true');
@@ -231,6 +233,8 @@ function openLightbox() {
 function closeLightbox() {
   updateGallery(state.lightboxIndex)
   document.body.classList.remove('lightbox-open');
+  document.querySelector('.lightbox').setAttribute('inert', '');
+  document.querySelector('.lightbox').setAttribute('aria-hidden', 'true');
   elements.backdrop.classList.remove('lightbox-active');
 }
 
