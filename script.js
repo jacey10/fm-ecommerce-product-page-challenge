@@ -42,14 +42,6 @@ const elements = {
   menuOverlay: document.querySelector('.nav__drawer'),
   backdrop: document.querySelector('.backdrop'),
 
-  // Product Info
-  productCompany: document.querySelector('.brand'),
-  productName: document.querySelector('.product__title'),
-  productDescription: document.querySelector('.description'),
-  productPrice: document.querySelector('.sales__price'),
-  productOriginalPrice: document.querySelector('.original__price'),
-  productDiscount: document.querySelector('.discount__badge'),
-
   // Main image gallery
   mainImage: document.querySelector('.gallery__active--image'),
   galleryThumbnails: document.querySelector('.gallery__thumbnails'),
@@ -60,8 +52,8 @@ const elements = {
   lightboxImage: document.querySelector('.lightbox__active--image'),
   lightboxThumbnails: document.querySelector('.lightbox__thumbnails'),
   lightboxClose: document.querySelector('.lightbox__close--btn'),
-  lightboxPrev: document.querySelector('.lightbox__btn--prev'),
-  lightboxNext: document.querySelector('.lightbox__btn--next'),
+  lightboxPrev: document.querySelector('.lightbox__prev--btn'),
+  lightboxNext: document.querySelector('.lightbox__next--btn'),
   
   // Quantity
   quantityMinus: document.querySelector('.stepper__minus'),
@@ -73,6 +65,7 @@ const elements = {
   cartIcon: document.querySelector('.header__cart--btn'),
   cartDropdown: document.querySelector('.cart__modal'),
   cartCount: document.querySelector('.header__cart--badge'),
+  cartBody: document.querySelector('.cart__modal--body')
 };
 
 // ==========================================
@@ -93,12 +86,12 @@ function init() {
 // ==========================================
 
 function renderProductInfo() {
-  elements.productCompany.textContent = product.company;
-  elements.productName.textContent = product.name;
-  elements.productDescription.textContent = product.description;
-  elements.productPrice.textContent = `$${product.price.toFixed(2)}`;
-  elements.productOriginalPrice.textContent = `$${product.originalPrice.toFixed(2)}`;
-  elements.productDiscount.textContent = `${product.discount}%`;
+  document.querySelector('.brand').textContent = product.company;
+  document.querySelector('.product__title').textContent = product.name;
+  document.querySelector('.description').textContent = product.description;
+  document.querySelector('.sales__price').textContent = `$${product.price.toFixed(2)}`;
+  document.querySelector('.original__price').textContent = `$${product.originalPrice.toFixed(2)}`;
+  document.querySelector('.discount__badge').textContent = `${product.discount}%`;
 }
 
 function updateQuantityDisplay () {
@@ -139,10 +132,8 @@ function renderCartBadge() {
 }
 
 function renderCartItems() {
-  const body = document.querySelector('.cart__modal--body');
-  
   if (state.cart.length === 0) {
-    body.innerHTML = '<p class="cart__empty">Your cart is empty</p>';
+    elements.cartBody.innerHTML = '<p class="cart__empty">Your cart is empty</p>';
     return;
   }
 
@@ -162,7 +153,7 @@ function renderCartItems() {
     </div>
     `).join('');
     
-    body.innerHTML = itemsHTML + `
+    elements.cartBody.innerHTML = itemsHTML + `
     <button type="button" class="checkout__btn">Checkout</button>
   `;
 }
@@ -182,8 +173,13 @@ function toggleNav() {
 
   elements.menuButton.setAttribute('aria-expanded', isOpen);
   elements.menuOverlay.setAttribute('aria-hidden', !isOpen);
-  elements.menuOverlay.setAttribute('inert', !isOpen);
   elements.backdrop.setAttribute('aria-hidden', !isOpen);
+
+  if (isOpen) {
+    elements.menuOverlay.removeAttribute('inert');
+  } else {
+    elements.menuOverlay.setAttribute('inert', '');
+  }
 }
 
 // ==========================================
@@ -227,7 +223,6 @@ function openLightbox() {
   document.querySelector('.lightbox').removeAttribute('inert');
   document.querySelector('.lightbox').setAttribute('aria-hidden', 'false');
   elements.backdrop.classList.add('lightbox-active');
-  elements.backdrop.setAttribute('aria-disabled', 'true');
 }
 
 function closeLightbox() {
@@ -307,10 +302,6 @@ function addToCart() {
 
   renderCart();
 }
-
-/*function getCartTotal() {
-  return state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-}*/
 
 function removeFromCart(productId) {
   state.cart = state.cart.filter(item => item.id !== productId);
